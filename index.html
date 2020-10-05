@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="vue.js"></script>
+
+    <div id="app">
+        <p>Now {{ number }} times clicked</p>
+        <button v-on:click="countUp">Count up</button>
+        <p v-on:mousemove="changeMousePosition($event)">mouse over here</p>
+        <p>X:{{x}}, Y:{{y}}</p>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                number: 0,
+                x: 0,
+                y: 0
+            },
+            methods: {
+                countUp: function(times) {
+                    this.number += 1
+                },
+                changeMousePosition: function(event) {
+                    this.x = event.clientX;
+                    this.y = event.clientY;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -10,9 +10,10 @@
 
     <div id="app">
         <p>Now {{ number }} times clicked</p>
-        <button v-on:click="countUp">Count up</button>
+        <button @[event]="countUp">Count up</button>
         <p v-on:mousemove="changeMousePosition($event)">mouse over here</p>
         <p>X:{{x}}, Y:{{y}}</p>
+        <input type="text" v-on:keyup.enter="myAlert">
     </div>
     <script>
         new Vue({
@@ -20,7 +21,8 @@
             data: {
                 number: 0,
                 x: 0,
-                y: 0
+                y: 0,
+                event: 'click'
             },
             methods: {
                 countUp: function(times) {
@@ -29,6 +31,9 @@
                 changeMousePosition: function(event) {
                     this.x = event.clientX;
                     this.y = event.clientY;
+                },
+                myAlert() {
+                    alert('alert!')
                 }
             }
         })
